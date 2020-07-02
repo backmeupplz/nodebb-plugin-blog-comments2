@@ -330,26 +330,27 @@ var blogComments2Common = function (commentPositionDiv, nbb, kwargs) {
             }
         } else if (XHR.status == 404) {
            if (data.isAdmin) {
-            var markdown, articleTitle;
-            if (nbb.articleContent) {
-                markdown = nbb.articleContent + '\n\n**Click [here]('+articlePath+') to see the full blog post**';
-            } else {
-                markdown = document.getElementById('nbb-markdown').innerText;
-                markdown = markdown.split('\n\n').slice(0,2).join('\n\n') + '\n\n**Click [here]('+articlePath+') to see the full blog post**';
-            }
+                var markdown, articleTitle;
+                if (nbb.articleContent) {
+                    markdown = nbb.articleContent + '\n\n**Click [here]('+articlePath+') to see the full blog post**';
+                } else {
+                    markdown = document.getElementById('nbb-markdown').innerText;
+                    markdown = markdown.split('\n\n').slice(0,2).join('\n\n') + '\n\n**Click [here]('+articlePath+') to see the full blog post**';
+                }
 
-            if (nbb.articleTitle) {
-                articleTitle = nbb.articleTitle;
-            } else {
-                var telement = document.getElementById('nbb-title');
-                articleTitle = telement ? telement.innerText : document.title;
-            }
+                if (nbb.articleTitle) {
+                    articleTitle = nbb.articleTitle;
+                } else {
+                    var telement = document.getElementById('nbb-title');
+                    articleTitle = telement ? telement.innerText : document.title;
+                }
 
-            document.getElementById('nodebb-content-title').value = articleTitle;
-            document.getElementById('nodebb-content-markdown').value = markdown;
-            document.getElementById('nodebb-content-cid').value = nbb.cid || -1;
-            document.getElementById('nodebb-content-blogger').value = nbb.blogger;
-            document.getElementById('nodebb-content-tags').value = JSON.stringify(nbb.tags || '');
+                document.getElementById('nodebb-content-title').value = articleTitle;
+                document.getElementById('nodebb-content-markdown').value = markdown;
+                document.getElementById('nodebb-content-cid').value = nbb.cid || -1;
+                document.getElementById('nodebb-content-blogger').value = nbb.blogger;
+                document.getElementById('nodebb-content-tags').value = JSON.stringify(nbb.tags || '');
+           }
         }
     };
 
